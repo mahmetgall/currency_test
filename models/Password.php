@@ -13,9 +13,7 @@ class Password extends Model
     public $fio;
     public $password;
     public $password_repeat;
-    public $id_city, $adres;
-    public $city_name;
-
+   
 
     /**
      * {@inheritdoc}
@@ -32,7 +30,6 @@ class Password extends Model
     public function attributeLabels()
     {
         return array(
-
 
             'password' => 'Введите Пароль',
             'password_repeat' => 'Повторите пароль',

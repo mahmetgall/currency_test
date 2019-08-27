@@ -45,7 +45,9 @@ class ProfileController extends Controller
     }
 
 	
-	
+	/*
+	 * Личный кабинет + вывод товаров
+	 */
     public function actionIndex($id = 0)
     {
         $products = Product::find()->asArray()->all();
@@ -100,7 +102,9 @@ class ProfileController extends Controller
         );
 
     }
-	
+	/*
+	 * Просмотр валют
+	 */
 	 public function actionCurrency($id = 0)
     {
         $currencies = Currency::find()->asArray()->all();
