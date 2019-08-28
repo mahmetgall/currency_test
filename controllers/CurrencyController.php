@@ -7,6 +7,26 @@ use app\models\Currency;
 use app\models\UserCurrency;
 
 class CurrencyController extends \yii\web\Controller {
+	
+	
+	/*
+	 * Просмотр валют
+	 */
+	 public function actionIndex($id = 0)
+    {
+        $currencies = Currency::find()->asArray()->all();
+		$user_id = Yii::$app->user->id;
+		$user_currencies = UserCurrency::find()->where(['user_id' => $user_id])->asArray()->all();
+		
+		
+        return $this->render('index',
+            [
+                'currencies' =>$currencies,
+				'user_currencies' => $user_currencies,
+            ]
+        );
+
+    }
 
 	/*
 	 * Добавить или удалить выбранную валюту текущему пользователю

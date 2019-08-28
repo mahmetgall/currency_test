@@ -18,29 +18,8 @@ use app\models\Right;
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
-                <br>
-                <div class="prof">
-                    <div class="prof_title">
-                        Личный кабинет
-                    </div>
-
-                    <?= Html::a('Товары', ['/profile']); ?>
-                    <br>
-					<?= Html::a('Валюты', ['/profile/currency']); ?>
-                    <br>
-					
-                    <?= Html::a('Профиль', ['/profile/info']); ?>
-                    <?php
-                        // пункт показывается только админу
-                        if (Right::isAdmin()) {
-                            echo '<br>';
-                            echo Html::a('Управление товарами', ['/admin/product']);
-                        }
-                    ?>
-                </div>
-            </div>
-            <div class="col-lg-8" >
+            
+            <div class="col-lg-12" >
 
                     <div class="row">
                         <div class="col-lg-12">

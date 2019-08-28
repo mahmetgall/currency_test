@@ -45,22 +45,7 @@ class ProfileController extends Controller
     }
 
 	
-	/*
-	 * Личный кабинет + вывод товаров
-	 */
-    public function actionIndex($id = 0)
-    {
-        $products = Product::find()->asArray()->all();
-		$mUser = User::findIdentity(Yii::$app->user->id);
-		
-        return $this->render('index',
-            [
-                'products' =>$products,
-				'currencies' => $mUser->currency,
-            ]
-        );
-
-    }
+	
 
     /*
      * просмотр профиля
@@ -102,23 +87,6 @@ class ProfileController extends Controller
         );
 
     }
-	/*
-	 * Просмотр валют
-	 */
-	 public function actionCurrency($id = 0)
-    {
-        $currencies = Currency::find()->asArray()->all();
-		$user_id = Yii::$app->user->id;
-		$user_currencies = UserCurrency::find()->where(['user_id' => $user_id])->asArray()->all();
-		
-		
-        return $this->render('currency',
-            [
-                'currencies' =>$currencies,
-				'user_currencies' => $user_currencies,
-            ]
-        );
-
-    }
+	
 
 }

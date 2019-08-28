@@ -20,28 +20,8 @@ use app\models\Right;
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-3">
-                <br>
-                <div class="prof">
-                    <div class="prof_title">
-                        Личный кабинет
-                    </div>
-
-                    <?= Html::a('Товары', ['/profile']); ?>
-                    <br>
-					<?= Html::a('Валюты', ['/profile/currency']); ?>
-                    <br>
-                    <?= Html::a('Профиль', ['/profile/info']); ?>
-                    <?php
-                    // пункт показывается только админу
-                    if (Right::isAdmin()) {
-                        echo '<br>';
-                        echo Html::a('Управление товарами', ['/admin/product']);
-                    }
-                    ?>
-                </div>
-            </div>
-            <div class="col-lg-8" >
+            
+            <div class="col-lg-12" >
                     <div class="row">
                         <div class="col-lg-12">
                             <h1>Моя информация:</h1>
@@ -64,7 +44,7 @@ use app\models\Right;
                             <?php ActiveForm::end(); ?>
 
                             <hr>
-                            <h2>Для изменения пароля, введите новый пароль:</h2>
+                            <h2>Введите новый пароль:</h2>
                             <?php $form = ActiveForm::begin(['id' => 'pass-signup']); ?>
 
                             <?= $form->field($password, 'password')->passwordInput() ?>

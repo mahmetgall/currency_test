@@ -8,6 +8,8 @@ use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\User;
+
 
 /**
  * ProductController implements the CRUD actions for Product model.
@@ -43,4 +45,22 @@ class ProductController extends Controller
 
         throw new NotFoundHttpException('The requested page does not exist.');
     }
+	
+	/*
+	 * Личный кабинет + вывод товаров
+	 */
+    public function actionIndex($id = 0)
+    {
+        $products = Product::find()->asArray()->all();
+		$mUser = User::findIdentity(Yii::$app->user->id);
+		
+        return $this->render('index',
+            [
+                'products' =>$products,
+				'currencies' => $mUser->currency,
+            ]
+        );
+
+    }
+
 }

@@ -10,6 +10,7 @@ use yii\widgets\Breadcrumbs;
 
 use app\assets\AppAsset;
 use app\widgets\Alert;
+use app\models\Right;
 
 
 AppAsset::register($this);
@@ -52,7 +53,37 @@ AppAsset::register($this);
                     
                 </div>
 
-                <div class="col-md-3 col-md-push-1 talignr"><?= Yii::$app->user->isGuest ? '<a href="/signup">Зарегистрироваться</a>' : '<a href="/profile">Личный кабинет</a>'?></div>
+                <div class="col-md-3 col-md-push-1 talignr">
+					<?php if (Yii::$app->user->isGuest) {
+								echo '<a href="/signup">Зарегистрироваться</a>';
+								
+						  } else { 
+								
+								echo	'<div class="dropdown">
+											<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+											  Личный кабинет
+											</button>
+											<div class="dropdown-menu pad10" aria-labelledby="dropdownMenuButton">
+											  <a class="dropdown-item" href="/profile/info">Профиль</a>
+											  <br>
+											  <a class="dropdown-item" href="/product">Товары</a>
+											  <br>
+											  <a class="dropdown-item" href="/currency">Валюты</a>
+											  <br>';
+								
+								// пункт показывается только админу
+								if (Right::isAdmin()) {
+									
+									echo '<a class="dropdown-item" href="/admin/product">Управление товарами</a>';
+									
+								}
+     							
+								echo '	</div></div>';
+										
+						  }
+					?>
+					
+				</div>
                 <div class="col-md-1 col-md-push-1 talignr"><?= Yii::$app->user->isGuest ? '<a href="/login">Войти</a>' : '<a href="/logout">Выйти</a>'?></div>
             </div>
             <div class="row">

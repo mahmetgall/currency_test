@@ -8,4 +8,3 @@ use yii\helpers\Html;
 
 </div>
 
-<script src="/js/sign.js"></script>
